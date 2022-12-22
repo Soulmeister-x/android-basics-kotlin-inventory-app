@@ -42,6 +42,13 @@ class InventoryViewModel(private val itemDao: ItemDao): ViewModel() {
         return !(itemName.isBlank() || itemPrice.isBlank() || itemCount.isBlank())
     }
 
+    /**
+     * Retrieve the item details from the database based on the item id
+     */
+    fun retrieveItem(id: Int): LiveData<Item> {
+        return itemDao.getItemById(id).asLiveData()
+    }
+
 }
 
 
